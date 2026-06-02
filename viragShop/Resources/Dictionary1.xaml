@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style>
+        <Setter Property="Background" Value="#FFB6C1"/>
+    </Style>
+</ResourceDictionary>
