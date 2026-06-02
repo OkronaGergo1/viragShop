@@ -6,7 +6,56 @@
         xmlns:local="clr-namespace:viragShop"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <Window.Resources>
+        <ResourceDictionary Source=" Resources/Buttons.xaml" />
+    </Window.Resources>
+    <DockPanel Background="DarkSeaGreen">
+        <StackPanel Height="30" DockPanel.Dock="Top">
+            <TextBlock
+            FontWeight="ExtraBold"
+            Foreground="White"
+            Text="eKréta Adminisztrátori felület"
+            TextAlignment="Center" />
+        </StackPanel>
+        <StackPanel
+        Width="200"
+        Background="ForestGreen"
+        DockPanel.Dock="Left">
+            <ListView>
+                <ListViewItem
+                x:Name="diakMenu"
+                Content="Diakok"
+                MouseLeftButtonUp="diakMenu_MouseLeftButtonUp"
+                 />
+                <ListViewItem
+                x:Name="tanarMenu"
+                Content="Tanárok"
+                MouseLeftButtonUp="tanarMenu_MouseLeftButtonUp"
+                 />
+                <ListViewItem
+                x:Name="osztalyMenu"
+                Content="Tanárok"
+                MouseLeftButtonUp="osztalyMenu_MouseLeftButtonUp"
+                 />
+                <ListViewItem
+                x:Name="termekMenu"
+                Content="Termek"
+                MouseLeftButtonUp="termekMenu_MouseLeftButtonUp"
+                 />
+                <ListViewItem
+                x:Name="felhasznalokMenu"
+                Content="Felhasznalók"
+                MouseLeftButtonUp="felhasznalokMenu_MouseLeftButtonUp"
+                 />
+                <ListViewItem
+                x:Name="kilepesMenu"
+                Background="Red"
+                Content="Bezárás"
+                Foreground="White"
+                MouseLeftButtonUp="kilepesMenu_MouseLeftButtonUp"
+                 />
+            </ListView>
+        </StackPanel>
+        <StackPanel x:Name="feladatPanel" DockPanel.Dock="Right" />
+    </DockPanel>
 </Window>
