@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace viragShop.Models
+{
+    internal class Vasarlo
+    {
+        public Vasarlo()
+        {
+        }
+
+        public int Id { get; set; }
+        public string Nev { get; set; }
+        public int SzulDatum { get; set; }
+        public string Lakcim { get; set; }
+        public int Iranyitoszam { get; set; }
+
+        public Vasarlo(string nev, int szulDatum, string lakcim, int iranyitoszam)
+        {
+            Nev = nev;
+            SzulDatum = szulDatum;
+            Lakcim = lakcim;
+            Iranyitoszam = iranyitoszam;
+        }
+    }
+}
