@@ -7,55 +7,67 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <ResourceDictionary Source=" Resources/Buttons.xaml" />
+        <ResourceDictionary Source="Resources/Buttons.xaml" />
     </Window.Resources>
+
     <DockPanel Background="DarkSeaGreen">
-        <StackPanel Height="30" DockPanel.Dock="Top">
-            <TextBlock
-            FontWeight="ExtraBold"
-            Foreground="White"
-            Text="eKréta Adminisztrátori felület"
-            TextAlignment="Center" />
+
+        <StackPanel DockPanel.Dock="Top" Background="ForestGreen" Height="60">
+            <TextBlock Text="VirágShop Adminisztráció"
+                       Foreground="White"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0 5"/>
         </StackPanel>
-        <StackPanel
-        Width="200"
-        Background="ForestGreen"
-        DockPanel.Dock="Left">
-            <ListView>
-                <ListViewItem
-                x:Name="diakMenu"
-                Content="Diakok"
-                MouseLeftButtonUp="diakMenu_MouseLeftButtonUp"
-                 />
-                <ListViewItem
-                x:Name="tanarMenu"
-                Content="Tanárok"
-                MouseLeftButtonUp="tanarMenu_MouseLeftButtonUp"
-                 />
-                <ListViewItem
-                x:Name="osztalyMenu"
-                Content="Tanárok"
-                MouseLeftButtonUp="osztalyMenu_MouseLeftButtonUp"
-                 />
-                <ListViewItem
-                x:Name="termekMenu"
-                Content="Termek"
-                MouseLeftButtonUp="termekMenu_MouseLeftButtonUp"
-                 />
-                <ListViewItem
-                x:Name="felhasznalokMenu"
-                Content="Felhasznalók"
-                MouseLeftButtonUp="felhasznalokMenu_MouseLeftButtonUp"
-                 />
-                <ListViewItem
-                x:Name="kilepesMenu"
-                Background="Red"
-                Content="Bezárás"
-                Foreground="White"
-                MouseLeftButtonUp="kilepesMenu_MouseLeftButtonUp"
-                 />
-            </ListView>
-        </StackPanel>
-        <StackPanel x:Name="feladatPanel" DockPanel.Dock="Right" />
+
+        <WrapPanel DockPanel.Dock="Top"
+                   Orientation="Horizontal"
+                   HorizontalAlignment="Center"
+                   Margin="0 0"
+                   Background="ForestGreen" 
+                   Width="800">
+
+            <Button Content="Virágok"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Click="ViragMenu_Click"
+                    Style="{StaticResource buttons}"/>
+
+            <Button Content="Vásárlók"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Click="VasarloMenu_Click"
+                    Style="{StaticResource buttons}"/>
+
+            <Button Content="Munkások"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Click="MunkasMenu_Click"
+                    Style="{StaticResource buttons}"/>
+
+            <Button Content="Szerepkörök"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Click="SzerepkorMenu_Click"
+                    Style="{StaticResource buttons}"/>
+
+            <Button Content="Kilépés"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Background="Red"
+                    Foreground="White"
+                    Click="KilepesMenu_Click"
+                    Style="{StaticResource buttons}"/>
+
+        </WrapPanel>
+
+        <StackPanel x:Name="feladatPanel"
+                    Margin="10"/>
     </DockPanel>
 </Window>

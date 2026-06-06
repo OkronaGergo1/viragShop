@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace viragShop.Models
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : new()
+    public class GenericRepository<T> : IGenericRepository<T> where T : new()
     {
         private readonly string _databasePath;
         public GenericRepository(string databasePath)
