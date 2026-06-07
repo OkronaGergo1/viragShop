@@ -9,7 +9,7 @@ namespace viragShop.Models
     internal interface IGenericRepository<T> where T : new()
     {
         List<T> GetAll();
-        void insert(T item);
+        void Insert(T item);
         void Update(T item);
         void Delete(T item);
     }

@@ -32,7 +32,7 @@ namespace viragShop.Models
             }
         }
 
-        public void insert(T item)
+        public void Insert(T item)
         {
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(_databasePath))
             {

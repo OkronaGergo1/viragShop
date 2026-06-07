@@ -49,13 +49,6 @@
                     Click="MunkasMenu_Click"
                     Style="{StaticResource buttons}"/>
 
-            <Button Content="Szerepkörök"
-                    Width="120"
-                    Height="40"
-                    Margin="5"
-                    Click="SzerepkorMenu_Click"
-                    Style="{StaticResource buttons}"/>
-
             <Button Content="Kilépés"
                     Width="120"
                     Height="40"

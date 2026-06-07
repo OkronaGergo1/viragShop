@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="viragShop.UserControls.UserControlViragok"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:viragShop.UserControls"
+      mc:Ignorable="d" 
+      >
+
+    <Grid Background="DarkOliveGreen" Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Felhasználók kezelése"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Margin="20, 0, 0, 20"
+                   Foreground="White"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="MistyRose"
+                    CornerRadius="10"
+                    Padding="15"
+                    Margin="10, 0, 20, 10">
+                <DataGrid x:Name="datagridViragok"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          SelectionChanged="datagridFelhasznalok_SelectionChanged"
+                          HeadersVisibility="Column"
+                          GridLinesVisibility="None"
+                          RowHeight="35"
+                          ColumnHeaderHeight="40">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="ID"/>
+                        <DataGridTextColumn Binding="{Binding Nev}" Header="Nev"/>
+                        <DataGridTextColumn Binding="{Binding Leiras}" Header="Leiras"/>
+                        <DataGridTextColumn Binding="{Binding Ar}" Header="Ar"/>
+                        <DataGridTextColumn Binding="{Binding Mennyiseg}" Header="Mennyiseg"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="MistyRose"
+                    CornerRadius="10"
+                    Padding="20"
+                    Margin="0,0,20,10">
+
+                <StackPanel>
+
+                    <TextBlock Text="Viragok adatai"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Margin="0, 0, 0, 10"/>
+
+                    <TextBlock Text="Virág neve:"/>
+                    <TextBox x:Name="ViragneveText" Height="30"/>
+
+                    <TextBlock Text="Virág Leírása:"/>
+                    <TextBox x:Name="ViragLeirasaText" Height="60"/>
+
+                    <TextBlock Text="Virág ára:"/>
+                    <TextBox x:Name="ViragaraText" Height="30"/>
+
+                    <TextBlock Text="Mennyiség:"/>
+                    <TextBox x:Name="MennyisegText" Height="30"/>
+
+                    <StackPanel Margin="0, 20, 0, 0">
+                        <Button x:Name="mentesBtn"
+                                Content="Mentés"
+                                Height="40"
+                                Background="#4CAF50"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Click="mentesBtn_Click"/>
+
+                        <Button x:Name="modositasBtn"
+                                Content="Módosítás"
+                                Height="40"
+                                Background="#FFC107"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Visibility="Hidden"
+                                Click="modositasBtn_Click"/>
+
+                        <Button x:Name="torlesBtn"
+                                Content="Törlés"
+                                Height="40"
+                                Background="#F44336"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Visibility="Hidden"
+                                Click="torlesBtn_Click"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
+</UserControl>
