@@ -42,7 +42,7 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Nev}" Header="Név"/>
-                        <DataGridTextColumn Binding="{Binding SzuletesiDatum}" Header="Születési dátum"/>
+                        <DataGridTextColumn Binding="{Binding SzulDatum}" Header="Születési dátum"/>
                         <DataGridTextColumn Binding="{Binding Lakcim}" Header="Lakcím"/>
                         <DataGridTextColumn Binding="{Binding Iranyitoszam}" Header="Irányítószám"/>
                         <DataGridTextColumn Binding="{Binding Jelszo}" Header="Jelszó"/>

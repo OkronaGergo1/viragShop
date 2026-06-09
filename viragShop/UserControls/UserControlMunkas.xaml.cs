@@ -64,7 +64,7 @@ namespace viragShop.UserControls
             SzületesidatumText.Text = kivalasztottMunkas.SzulDatum.ToString();
             LakcimText.Text = kivalasztottMunkas.Lakcim;
             BeosztasText.Text = kivalasztottMunkas.Beosztas;
-            JelszoText.Text = "";
+            JelszoText.Text = kivalasztottMunkas.Jelszo;
         }
 
         private void mentesBtn_Click(object sender, RoutedEventArgs e)

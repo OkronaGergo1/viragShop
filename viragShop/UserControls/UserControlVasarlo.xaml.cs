@@ -64,7 +64,7 @@ namespace viragShop.UserControls
             SzületesidatumText.Text = kivalasztottVasarlo.SzulDatum.ToString();
             LakcimText.Text = kivalasztottVasarlo.Lakcim;
             IranyitoszamText.Text = kivalasztottVasarlo.Iranyitoszam.ToString();
-            JelszoText.Text = "";
+            JelszoText.Text = kivalasztottVasarlo.Jelszo;
         }
 
         private void mentesBtn_Click(object sender, RoutedEventArgs e)
@@ -82,6 +82,15 @@ namespace viragShop.UserControls
             repo.Insert(ujVasarlo);
 
             AdatbazisLekerdezes();
+            /*
+            //felhasználó objektum
+            Felhasznalo ujFelhasznalo = new Felhasznalo(nevText.Text, SzületesidatumText.Text, PasswordHelper.HashPassword(JelszoText.Text), int.Parse(IranyitoszamText.Text));
+
+            //adat insert
+            var felhasznaloRepo = new GenericRepository<Felhasznalo>(App.databasePath);
+            felhasznaloRepo.Insert(ujFelhasznalo);
+            //datagrid frissités
+            AdatbazisLekerdezes();*/
         }
 
         private void modositasBtn_Click(object sender, RoutedEventArgs e)
