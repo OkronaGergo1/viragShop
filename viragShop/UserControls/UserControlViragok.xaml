@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Felhasználók kezelése"
+        <TextBlock Text="Virágok kezelése"
                    FontSize="26"
                    FontWeight="Bold"
                    Margin="20, 0, 0, 20"

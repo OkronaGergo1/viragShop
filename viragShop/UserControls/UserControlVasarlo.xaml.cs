@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using viragShop.Models;
+using viragShop.Services;
 
 namespace viragShop.UserControls
 {
@@ -21,8 +22,8 @@ namespace viragShop.UserControls
     /// </summary>
     public partial class UserControlVasarlo : UserControl
     {
-        List<Viragok> viragok;
-        Viragok kivalasztottVirag;
+        List<Vasarlo> vasarlok;
+        Vasarlo kivalasztottVasarlo;
 
         public UserControlVasarlo()
         {
@@ -32,9 +33,10 @@ namespace viragShop.UserControls
 
         private void AdatbazisLekerdezes()
         {
-            var viragRepo = new GenericRepository<Viragok>(App.databasePath);
-            var lekerdezes = viragRepo.GetAll();
-            datagridViragok.ItemsSource = lekerdezes;
+            var repo = new GenericRepository<Vasarlo>(App.databasePath);
+            vasarlok = repo.GetAll();
+
+            datagridViragok.ItemsSource = vasarlok;
 
             mentesBtn.Visibility = Visibility.Visible;
             modositasBtn.Visibility = Visibility.Hidden;
@@ -44,6 +46,7 @@ namespace viragShop.UserControls
             SzületesidatumText.Text = "";
             LakcimText.Text = "";
             IranyitoszamText.Text = "";
+            JelszoText.Text = "";
         }
 
         private void datagridFelhasznalok_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,51 +54,58 @@ namespace viragShop.UserControls
             if (datagridViragok.SelectedItem == null)
                 return;
 
+            kivalasztottVasarlo = (Vasarlo)datagridViragok.SelectedItem;
+
             mentesBtn.Visibility = Visibility.Collapsed;
             modositasBtn.Visibility = Visibility.Visible;
             torlesBtn.Visibility = Visibility.Visible;
 
-            kivalasztottVirag = (Viragok)datagridViragok.SelectedItem;
-
-            nevText.Text = kivalasztottVirag.Nev;
-            SzületesidatumText.Text = kivalasztottVirag.Leiras;
-            LakcimText.Text = kivalasztottVirag.Ar.ToString();
-            IranyitoszamText.Text = kivalasztottVirag.Mennyiseg.ToString();
+            nevText.Text = kivalasztottVasarlo.Nev;
+            SzületesidatumText.Text = kivalasztottVasarlo.SzulDatum.ToString();
+            LakcimText.Text = kivalasztottVasarlo.Lakcim;
+            IranyitoszamText.Text = kivalasztottVasarlo.Iranyitoszam.ToString();
+            JelszoText.Text = "";
         }
 
         private void mentesBtn_Click(object sender, RoutedEventArgs e)
         {
-            Viragok ujVirag = new Viragok()
+            Vasarlo ujVasarlo = new Vasarlo()
             {
                 Nev = nevText.Text,
-                Leiras = SzületesidatumText.Text,
-                Ar = int.Parse(LakcimText.Text),
-                Mennyiseg = int.Parse(IranyitoszamText.Text)
+                SzulDatum = int.Parse(SzületesidatumText.Text),
+                Lakcim = LakcimText.Text,
+                Iranyitoszam = int.Parse(IranyitoszamText.Text),
+                Jelszo = PasswordHelper.HashPassword(JelszoText.Text)
             };
 
-            var viragRepo = new GenericRepository<Viragok>(App.databasePath);
-            viragRepo.Insert(ujVirag);
+            var repo = new GenericRepository<Vasarlo>(App.databasePath);
+            repo.Insert(ujVasarlo);
 
             AdatbazisLekerdezes();
         }
 
         private void modositasBtn_Click(object sender, RoutedEventArgs e)
         {
-            kivalasztottVirag.Nev = nevText.Text;
-            kivalasztottVirag.Leiras = SzületesidatumText.Text;
-            kivalasztottVirag.Ar = int.Parse(LakcimText.Text);
-            kivalasztottVirag.Mennyiseg = int.Parse(IranyitoszamText.Text);
+            kivalasztottVasarlo.Nev = nevText.Text;
+            kivalasztottVasarlo.SzulDatum = int.Parse(SzületesidatumText.Text);
+            kivalasztottVasarlo.Lakcim = LakcimText.Text;
+            kivalasztottVasarlo.Iranyitoszam = int.Parse(IranyitoszamText.Text);
 
-            var viragRepo = new GenericRepository<Viragok>(App.databasePath);
-            viragRepo.Update(kivalasztottVirag);
+            if (!string.IsNullOrWhiteSpace(JelszoText.Text))
+            {
+                kivalasztottVasarlo.Jelszo = PasswordHelper.HashPassword(JelszoText.Text);
+            }
+
+            var repo = new GenericRepository<Vasarlo>(App.databasePath);
+            repo.Update(kivalasztottVasarlo);
 
             AdatbazisLekerdezes();
         }
 
         private void torlesBtn_Click(object sender, RoutedEventArgs e)
         {
-            var viragRepo = new GenericRepository<Viragok>(App.databasePath);
-            viragRepo.Delete(kivalasztottVirag);
+            var repo = new GenericRepository<Vasarlo>(App.databasePath);
+            repo.Delete(kivalasztottVasarlo);
 
             AdatbazisLekerdezes();
         }

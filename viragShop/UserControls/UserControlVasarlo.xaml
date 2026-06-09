@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:viragShop.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="480" d:DesignWidth="800">
 
     <Grid Background="DarkOliveGreen" Margin="20">
 
@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Felhasználók kezelése"
+        <TextBlock Text="Vásárlók kezelése"
                FontSize="26"
                FontWeight="Bold"
                Margin="20, 0, 0, 20"
@@ -41,11 +41,11 @@
                       ColumnHeaderHeight="40">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Id}" Header="ID"/>
-                        <DataGridTextColumn Binding="{Binding Nev}" Header="Nev"/>
-                        <DataGridTextColumn Binding="{Binding Leiras}" Header="Leiras"/>
-                        <DataGridTextColumn Binding="{Binding Ar}" Header="Ar"/>
-                        <DataGridTextColumn Binding="{Binding Mennyiseg}" Header="Mennyiseg"/>
+                        <DataGridTextColumn Binding="{Binding Nev}" Header="Név"/>
+                        <DataGridTextColumn Binding="{Binding SzuletesiDatum}" Header="Születési dátum"/>
+                        <DataGridTextColumn Binding="{Binding Lakcim}" Header="Lakcím"/>
+                        <DataGridTextColumn Binding="{Binding Iranyitoszam}" Header="Irányítószám"/>
+                        <DataGridTextColumn Binding="{Binding Jelszo}" Header="Jelszó"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -67,13 +67,16 @@
                     <TextBox x:Name="nevText" Height="30"/>
 
                     <TextBlock Text="Születési dátum:"/>
-                    <TextBox x:Name="SzületesidatumText" Height="60"/>
+                    <TextBox x:Name="SzületesidatumText" Height="30"/>
 
                     <TextBlock Text="Lakcím:"/>
                     <TextBox x:Name="LakcimText" Height="30"/>
 
                     <TextBlock Text="Irányítószám:"/>
                     <TextBox x:Name="IranyitoszamText" Height="30"/>
+                    
+                    <TextBlock Text="Jelszo:"/>
+                    <TextBox x:Name="JelszoText" Height="30"/>
 
                     <StackPanel Margin="0, 20, 0, 0">
                         <Button x:Name="mentesBtn"

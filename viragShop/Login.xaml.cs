@@ -32,33 +32,51 @@ namespace viragShop
         {
             string felhasznalonevInput = loginUserTxt.Text;
             string jelszoInput = PasswordHelper.HashPassword(loginPasswordText.Password);
-            if (!string.IsNullOrEmpty(loginUserTxt.Text) || !string.IsNullOrEmpty(loginPasswordText.Password))
+            if (string.IsNullOrEmpty(felhasznalonevInput) || string.IsNullOrEmpty(loginPasswordText.Password))
             {
-                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                MessageBox.Show("Felhasználónév és jelszó megadása kötelező!");
+                return;
+            }
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                var vasarlo = connection.Table<Vasarlo>()
+                    .FirstOrDefault(v => v.Nev == felhasznalonevInput);
+                if (vasarlo != null)
                 {
-                    var user = connection.Table<Felhasznalo>().FirstOrDefault(u => u.FelhasznaloNev == felhasznalonevInput);
-                    if (user != null)
+                    if (vasarlo.Jelszo == jelszoInput)
                     {
-                        if (user.Jelszo == jelszoInput)
-                        {
-                            MainWindow mainWindow = new MainWindow();
-                            mainWindow.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Belépés megtagadva!");
-                        }
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                        return;
                     }
                     else
                     {
-                        MessageBox.Show("Belépés megtagadva!");
+                        MessageBox.Show("Hibás jelszó!");
+                        return;
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Felhasználó és jelszó megadása kötelező!");
+
+                var munkas = connection.Table<Munkas>()
+                    .FirstOrDefault(m => m.Nev == felhasznalonevInput);
+
+                if (munkas != null)
+                {
+                    if (munkas.Jelszo == jelszoInput)
+                    {
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hibás jelszó!");
+                        return;
+                    }
+                }
+                MessageBox.Show("Belépés megtagadva! Nincs ilyen felhasználónév.");
             }
         }
     }

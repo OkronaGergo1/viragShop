@@ -17,13 +17,15 @@ namespace viragShop.Models
         public int SzulDatum { get; set; }
         public string Lakcim { get; set; }
         public string Beosztas { get; set; }
+        public string Jelszo { get; set; }
 
-        public Munkas(string nev, int szulDatum, string lakcim, string beosztas)
+        public Munkas(string nev, int szulDatum, string lakcim, string beosztas, string jelszo)
         {
             Nev = nev;
             SzulDatum = szulDatum;
             Lakcim = lakcim;
             Beosztas = beosztas;
+            Jelszo = jelszo;
         }
     }
 }
