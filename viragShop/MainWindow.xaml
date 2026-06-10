@@ -31,7 +31,7 @@
             <Button Content="Virágok"
                     Width="120"
                     Height="40"
-                    Margin="140 0 0 0"
+                    Margin="80 0 0 0"
                     Click="ViragMenu_Click"
                     Style="{StaticResource buttons}"/>
 
@@ -47,6 +47,13 @@
                     Height="40"
                     Margin="5"
                     Click="MunkasMenu_Click"
+                    Style="{StaticResource buttons}"/>
+            
+            <Button Content="Virag Vasarlas"
+                    Width="120"
+                    Height="40"
+                    Margin="5"
+                    Click="Vasarlas_Click"
                     Style="{StaticResource buttons}"/>
 
             <Button Content="Kilépés"

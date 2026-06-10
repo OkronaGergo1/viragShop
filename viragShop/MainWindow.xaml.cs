@@ -43,5 +43,11 @@ namespace viragShop
         {
             App.Current.Shutdown();
         }
+
+        private void Vasarlas_Click(object sender, RoutedEventArgs e)
+        {
+            feladatPanel.Children.Clear();
+            feladatPanel.Children.Add(new UserControls.UserControlViragVasarlas());
+        }
     }
 }
